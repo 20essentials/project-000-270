@@ -32,7 +32,7 @@ body {
     width: var(--vw);
     height: var(--vh);
     backface-visibility: hidden;
-    background-image: url('assets/pattern.jpg');
+    background-image: url('pattern.jpg');
     background-size: 20vw;
     background-position: center;
 

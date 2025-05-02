@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ritem</title>
+    <meta name="google" content="notranslate" />
+    <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script id="template" type="text/x-handlebars-template">
+      {{#each scenes}}
+        <div class="scene {{this.class}}">
+          {{#each this.sides}}
+            <div class="lado {{this}}"></div>
+          {{/each}}
+        </div>
+      {{/each}}
+
+      <div class="container">
+        {{#each bases}}
+          <div class="base {{this.class}}">
+            {{#each this.sides}}
+              <div class="side {{this}}"></div>
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    </script>
+
+    <script>
+      const source = document.getElementById("template").innerHTML;
+      const template = Handlebars.compile(source);
+
+      const context = {
+        scenes: [
+          {
+            class: "scene1",
+            sides: [
+              "lado-top",
+              "lado-bottom",
+              "lado-behind",
+              "lado-front",
+              "lado-right",
+              "lado-left"
+            ]
+          },
+          {
+            class: "scene2",
+            sides: [
+              "lado-top",
+              "lado-bottom",
+              "lado-behind",
+              "lado-front",
+              "lado-right",
+              "lado-left"
+            ]
+          }
+        ],
+        bases: [
+          {
+            class: "base-bottom",
+            sides: ["side-1", "side-2", "side-3", "side-4", "side-5"]
+          },
+          {
+            class: "center",
+            sides: ["side-1", "side-2", "side-3", "side-4", "side-5"]
+          },
+          {
+            class: "center-top",
+            sides: ["side-1", "side-2", "side-3", "side-4", "side-5"]
+          },
+          {
+            class: "base-top",
+            sides: ["side-1", "side-2", "side-3", "side-4", "side-5"]
+          }
+        ]
+      };
+
+      const html = template(context);
+      document.body.innerHTML = html + '<script src="script.js"><\/script>';
+    </script>
+  </body>
+</html>
